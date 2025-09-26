@@ -1,5 +1,6 @@
 import os
 import yaml
+import urllib
 
 from linkml.generators.pydanticgen import PydanticGenerator
 
@@ -8,9 +9,12 @@ import streamlit_pydantic as sp
 
 st.set_page_config(page_title='Bilayers Schema Creation')
 
-model_yaml = '../bilayers/tests/test_config/validate_schema.yaml' 
+web_model_yaml = 'https://raw.githubusercontent.com/bilayer-containers/bilayers/refs/heads/main/tests/test_config/validate_schema.yaml' 
+local_model_yaml = 'config.yaml'
 
-with open(model_yaml,'r') as fd:
+urllib.request.urlretrieve(web_model_yaml,local_model_yaml)
+
+with open(local_model_yaml,'r') as fd:
     model = yaml.safe_load(fd)
 
 if "linkml" not in model["prefixes"].keys():
@@ -30,6 +34,7 @@ with open('bilayers_model.py','w') as fw:
             line = line.replace('range: Any','range: str')
             fw.write(line)
 
+os.remove(local_model_yaml)
 os.remove('bilayers_model_raw.py')
 
 from bilayers_model import SpecContainer
