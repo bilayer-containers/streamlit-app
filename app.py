@@ -40,8 +40,8 @@ if not st.session_state["created_pydantic"]:
                 line = line.replace('range: Any','range: str')
                 fw.write(line)
 
-    os.remove(local_model_yaml)
-    os.remove('bilayers_model_raw.py')
+    #os.remove(local_model_yaml)
+    #os.remove('bilayers_model_raw.py')
 
     st.session_state["created_pydantic"]=True
 
