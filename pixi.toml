@@ -1,0 +1,16 @@
+[workspace]
+authors = ["bethac07 <bcimini@broadinstitute.org>"]
+channels = ["conda-forge"]
+name = "streamlit-app"
+platforms = ["osx-arm64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+streamlit = ">=1.50.0,<2"
+pydantic = ">=2.11.9,<3"
+linkml = ">=1.9.4,<2"
+
+[pypi-dependencies]
+streamlit-pydantic = { git = "https://github.com/Institutional-Investment-Group/streamlit-pydantic/", branch = "feature/handle-optional-type" }
