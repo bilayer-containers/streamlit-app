@@ -11,7 +11,7 @@ st.set_page_config(page_title='Bilayers Schema Creation')
 
 st.write("# Bilayers schema configuration")
 
-st.session_state["created_pydantic"]=False
+st.session_state["created_pydantic"]=os.path.exists('bilayers_model.py')
 
 if not st.session_state["created_pydantic"]:
 
@@ -40,8 +40,8 @@ if not st.session_state["created_pydantic"]:
                 line = line.replace('range: Any','range: str')
                 fw.write(line)
 
-    #os.remove(local_model_yaml)
-    #os.remove('bilayers_model_raw.py')
+    os.remove(local_model_yaml)
+    os.remove('bilayers_model_raw.py')
 
     st.session_state["created_pydantic"]=True
 
