@@ -43,8 +43,8 @@ if not st.session_state["created_pydantic"]:
     os.remove(local_model_yaml)
     os.remove('bilayers_model_raw.py')
 
-    from bilayers_model import SpecContainer
-
     st.session_state["created_pydantic"]=True
+
+from bilayers_model import SpecContainer
 data = sp.pydantic_input(key="spec_container",model=SpecContainer, group_optional_fields="expander" )
 st.download_button("Download your config file here",yaml.dump({k:v for k,v in data.items() if 'spec_container' not in k}),'config.yaml')
