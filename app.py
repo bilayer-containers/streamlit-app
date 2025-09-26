@@ -13,7 +13,7 @@ st.write("# Bilayers schema configuration")
 
 st.session_state["created_pydantic"]=False
 
-if not st.session_state["created_validation"]:
+if not st.session_state["created_pydantic"]:
 
     web_model_yaml = 'https://raw.githubusercontent.com/bilayer-containers/bilayers/refs/heads/main/tests/test_config/validate_schema.yaml' 
     local_model_yaml = 'config.yaml'
