@@ -15,7 +15,7 @@ st.session_state["created_pydantic"]=os.path.exists('bilayers_model.py')
 
 if not st.session_state["created_pydantic"]:
 
-    web_model_yaml = 'https://raw.githubusercontent.com/bilayer-containers/bilayers/refs/heads/main/tests/test_config/validate_schema.yaml' 
+    web_model_yaml = 'https://raw.githubusercontent.com/bilayer-containers/bilayers/refs/heads/main/src/bilayers/schema.yaml' 
     local_model_yaml = 'config.yaml'
 
     urllib.request.urlretrieve(web_model_yaml,local_model_yaml)
